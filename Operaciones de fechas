@@ -1,0 +1,50 @@
+-- fecha y hora actual del servidor / current date and time of server
+select GETDATE()
+
+-- hoy 0 horas / 0 hours of today
+SELECT     DATEADD(DAY, DATEDIFF(day, 0, GETDATE()), 0)
+
+-- ultimo segundo de hoy / last second of today
+SELECT     DATEADD(SECOND, - 1, DATEADD(DAY, DATEDIFF(day, 0, GETDATE()) + 1, 0))
+
+--  hora actual de ayer / yesterday current hour
+SELECT DATEADD(d,-1,GETDATE())
+
+-- ayer, 0 horas / zero hours of yesterday
+select DATEADD (DAY, DATEDIFF (day,0,getdate()),0)
+
+-- ayer, ultimo segundo / last second of yesterday
+SELECT     DATEADD(SECOND, - 1, DATEADD(DAY, DATEDIFF(day, 0, DATEADD(d,-1,GETDATE()) ) + 1, 0))
+
+-- primer día de la semana anterior / first day of last week
+SELECT DATEADD(week,DATEDIFF(week,7,GETDATE()),0)
+
+-- ultimo día de la semana anterior / last day of the last week
+SELECT DATEADD(week,DATEDIFF(week,7,GETDATE()),6)
+
+-- primer día de la semana actual / first day of current week
+select DATEADD(week,DATEDIFF(week,0,GETDATE()),0)
+
+-- primer día del mes actual / first day of current month
+select DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0)
+
+-- ultimo día del mes actual / last day of current month
+select DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,GETDATE())+1,0))
+
+-- primer día del mes anterior / first day of last month
+select DATEADD(mm, - 1, DATEADD(mm, DATEDIFF(mm, 0, GETDATE()), 0)) 
+
+-- ultimo día del mes anterior / last day of last month
+select DATEADD(ms, - 3, DATEADD(mm, 0, DATEADD(mm, DATEDIFF(mm, 0, GETDATE()), 0)))
+
+-- primer dia del año anterior / first day of last year
+SELECT DATEADD(yy,-1,DATEADD(yy,DATEDIFF(yy,0,GETDATE()),0))
+
+-- ultimo dia del año anterior / last day of last month
+SELECT DATEADD(ms,-3,DATEADD(yy,0,DATEADD(yy,DATEDIFF(yy,0,GETDATE()),0)))
+
+-- Primer día del año actual / First Day of Current Year  
+SELECT DATEADD(yy,DATEDIFF(yy,0,GETDATE()),0) 
+
+-- Ultimo día del año actual / Last Day of Current Yeat
+SELECT DATEADD(ms,-3,DATEADD(yy,0,DATEADD(yy,DATEDIFF(yy,0,GETDATE())+1,0)))
